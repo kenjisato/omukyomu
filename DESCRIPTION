@@ -1,0 +1,20 @@
+Package: omukyomu
+Title: Helper functions for Admin Tasks
+Version: 0.0.0.9000
+Authors@R: 
+    person("Kenji", "Sato", , "mail@kenjisato.jp", role = c("aut", "cre"))
+Description: This package helps someone who doesn't use R to use R scripts
+  for admin tasks.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Imports: 
+    crayon,
+    dplyr,
+    magrittr,
+    purrr,
+    rlang,
+    stringr,
+    tibble,
+    yaml
