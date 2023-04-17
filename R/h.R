@@ -1,4 +1,3 @@
-
 extract_description <- function(file, pattern = "^#\\|\\s+(.+)") {
   extract_one <- function(f) {
     . <- NULL
@@ -30,57 +29,63 @@ list_scripts <- function(dir, ...) {
                   ))
 }
 
-ask <- function(dir = "R", lang = "ja") {
-
-  dct_file <- paste0(lang, ".dct")
-  dct_file <- system.file("dct", dct_file, package = .packageName,
-                          mustWork = TRUE)
-  dct <- yaml::read_yaml(dct_file)
-
+#' Help to run R script
+#'
+#' @param dir character. Directory path for which R scripts are searched for.
+#'
+#' @return NULL
+#' @export
+#'
+h <- function(dir = "R") {
+  dcf <- get_dcf()
   df_scripts <- list_scripts(dir)
 
-  msg <- c(
-    "",
-    crayon::underline(crayon::blue(dct$prompt)),
-    df_scripts$msg,
-    paste(rep("-", 10), collapse = ""),
-    paste0(
-      sprintf("%2d", 0),
-      sprintf(": %s ", dct$quit)
-    ),
-    ""
-  )
-
   while(TRUE) {
+
+    ui_instruction(dcf$prompt)
+
+    msg <- c(
+      "",
+      df_scripts$msg,
+      paste(rep("-", 10), collapse = ""),
+      paste0(
+        sprintf("%2d", 0),
+        sprintf(": %s ", dcf$quit)
+      ),
+      ""
+    )
 
     writeLines(msg)
     selected <- try(as.integer(readline()))
 
     if (is.na(selected)) {
-      message(dct$not_a_number, "\n")
+      message(dcf$not_a_number, "\n")
       next()
     }
 
     if (selected > nrow(df_scripts)) {
-      message(sprintf(dct$out_of_range,
+      message(sprintf(dcf$out_of_range,
                       nrow(df_scripts)))
       next()
     }
 
-    if (selected == 0L) {
-      writeLines(c(
-        "",
-        dct$goodbye1,
-        dct$goodbye2,
-        "",
-        str_glue("   ask(\"{dir}\")"),
-        ""
-      ))
-      break()
-    } else {
-      message("Running ", df_scripts$path[[selected]])
-      source(df_scripts$path[[selected]])
-      message("Done.")
-    }
+    break()
   }
+
+  if (selected == 0L) {
+    writeLines(c(
+      "",
+      dcf$goodbye1,
+      dcf$goodbye2,
+      "",
+      str_glue("   h(\"{dir}\")"),
+      ""
+    ))
+  } else {
+    usethis::ui_todo(str_glue("{dcf$instruction}"))
+    usethis::ui_code_block(str_glue("source(\"{df_scripts$path[[selected]]}\")"))
+  }
+
+  invisible()
 }
+

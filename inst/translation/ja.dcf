@@ -1,0 +1,35 @@
+project_create:
+  parent-dir: プロジェクトの親フォルダを選んでください。
+  cancelled: キャンセルされました。
+  dir-exists: フォルダはすでに存在しています。
+  complete-creation: プロジェクトフォルダを作成しました。
+  complete-setwd: 作業ディレクトリを移動しました。
+  advice-r: 次に R を起動するときは econkyomu.RData をダブルクリックしてください。
+  advice-rstudio: 次回 RStudio を起動するときは econkyomu.Rproj をダブルクリックしてください。
+
+project_ensure:
+  not-in-project: プロジェクトフォルダが見つかりません。
+  create: プロジェクトフォルダを作る。
+  choose: プロジェクトフォルダを選ぶ。
+  cancel: キャンセル
+  advice: もう一度コマンドを実行してください。
+  cancelled: キャンセルされました。
+
+project_choose:
+  cancelled: キャンセルされました。
+  moved: プロジェクトフォルダに移動しました。
+
+moodle_shinsei:
+  no-html: Moodle サイトからダウンロードした HTML ファイルを選択してください。
+  no-xlsx: 教員リスト（Excelファイル）を選択してください。
+  complete: 完了
+
+h:
+  prompt: プログラムを選択してください。
+  not_a_number: 有効な数字を入力してください。
+  out_of_range: 0 から %s までの数字を入力してください。
+  instruction: 次のコマンドを実行してください。
+  quit: キャンセル
+  goodbye1: さようなら！
+  goodbye2: もう一度プログラムを選択するときは次のように入力してください。
+

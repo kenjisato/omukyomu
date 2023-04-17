@@ -1,0 +1,6 @@
+default:
+  # INPUTS
+  faculty_xlsx: RawData/faculty.xlsx
+  zemi_html: RawData/zemi.html
+  # OUTPUTS
+  out_shinsei: Data/shinsei.xlsx
