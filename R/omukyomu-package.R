@@ -10,7 +10,6 @@
 #' @importFrom omuecon moodle_html
 #' @importFrom omuecon moodle_label
 #' @importFrom omuecon moodle_page
-#' @importFrom omueconApp editor
 #' @importFrom purrr map_vec
 #' @importFrom rlang .data
 ## usethis namespace: end
