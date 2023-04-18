@@ -18,7 +18,7 @@ list_scripts <- function(dir, ...) {
   dcf <- get_dcf()
   files <- list.files(dir, pattern = "\\.R$", full.names = TRUE, ...)
   if (length(files) == 0) {
-    ui_oops(dcf$nothing)
+    usethis::ui_oops(dcf$nothing)
     rlang::interrupt()
   }
 

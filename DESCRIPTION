@@ -1,6 +1,6 @@
 Package: omukyomu
 Title: Helper functions for Admin Tasks
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person("Kenji", "Sato", , "mail@kenjisato.jp", role = c("aut", "cre"))
 Description: This package helps someone who doesn't use R to use R scripts
@@ -8,11 +8,9 @@ Description: This package helps someone who doesn't use R to use R scripts
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports: 
-    clipr,
     config,
-    cookies,
     crayon,
     dplyr,
     easycsv,
@@ -36,7 +34,5 @@ Remotes:
     github::kenjisato/omueconApp
 Suggests: 
     knitr,
-    qpdf,
-    rmarkdown,
-    tcltk
+    rmarkdown
 VignetteBuilder: knitr
