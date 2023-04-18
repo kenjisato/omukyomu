@@ -15,8 +15,15 @@ extract_description <- function(file, pattern = "^#\\|\\s+(.+)") {
 }
 
 list_scripts <- function(dir, ...) {
+  dcf <- get_dcf()
+  files <- list.files(dir, pattern = "\\.R$", full.names = TRUE, ...)
+  if (length(files) == 0) {
+    ui_oops(dcf$nothing)
+    rlang::interrupt()
+  }
+
   tibble::tibble(
-    path = list.files(dir, pattern = "\\.R$", full.names = TRUE, ...),
+    path = files,
     description = extract_description(.data$path)
   ) %>%
     dplyr::mutate(basename = basename(.data$path)) %>%
@@ -82,8 +89,8 @@ h <- function(dir = "R") {
       ""
     ))
   } else {
-    usethis::ui_todo(str_glue("{dcf$instruction}"))
-    usethis::ui_code_block(str_glue("source(\"{df_scripts$path[[selected]]}\")"))
+    usethis::ui_todo("{dcf$instruction}")
+    usethis::ui_code_block("source(\"{df_scripts$path[[selected]]}\")")
   }
 
   invisible()
